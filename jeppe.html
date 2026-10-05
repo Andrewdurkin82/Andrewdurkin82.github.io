@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jeppe case study — evidence-first personal AI, context retrieval, provenance, evaluation, and deployment." />
+  <title>Jeppe | Andrew Durkin</title>
+  <style>
+    :root{
+      --bg:#0b0f0e;--panel:#111715;--panel2:#151d1a;--text:#edf3ef;--muted:#9eaaa3;
+      --line:#26312c;--accent:#9dd6af;--gold:#d9b77b;--max:1120px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);line-height:1.6;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 86% 7%,rgba(94,137,107,.20),transparent 27rem),
+        radial-gradient(circle at 10% 36%,rgba(217,183,123,.07),transparent 24rem),
+        var(--bg)
+    }
+    a{color:inherit;text-decoration:none}
+    a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    nav{position:sticky;top:0;z-index:10;background:rgba(11,15,14,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.03em}
+    .back{color:var(--muted);font-size:.95rem}.back:hover{color:var(--text)}
+    header{padding:92px 0 64px}
+    .eyebrow{color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    h1{font-size:clamp(4rem,11vw,9rem);line-height:.84;letter-spacing:-.07em;margin:18px 0 26px}
+    .lede{font-size:clamp(1.2rem,2.5vw,1.65rem);color:#c8d2cc;max-width:850px}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:8px 11px;color:#b8c3bd;font-size:.78rem;letter-spacing:.04em}
+    .hero-grid{margin-top:58px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .stat{padding:22px 18px 22px 0}.stat+.stat{border-left:1px solid var(--line);padding-left:22px}
+    .stat strong{display:block;font-size:1.7rem;letter-spacing:-.04em}.stat span{color:var(--muted);font-size:.9rem}
+    section{padding:78px 0;border-top:1px solid rgba(255,255,255,.035)}
+    .split{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}
+    .label{color:var(--gold);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+    h2{font-size:clamp(2.4rem,5.5vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin:0 0 24px}
+    h3{font-size:1.28rem;margin:0 0 8px;letter-spacing:-.02em}
+    p{margin:0 0 18px;color:#c7d1cb}
+    .big{font-size:1.2rem}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{border:1px solid var(--line);background:rgba(17,23,21,.82);border-radius:16px;padding:22px}
+    .card p{color:var(--muted);margin:0}
+    .architecture{margin-top:32px;border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--panel)}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;align-items:stretch}
+    .node{min-height:118px;padding:15px;border:1px solid #314039;border-radius:12px;background:var(--panel2);display:flex;flex-direction:column;justify-content:center}
+    .node small{color:var(--accent);text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+    .node strong{margin-top:6px}.node span{font-size:.82rem;color:var(--muted);margin-top:5px}
+    .evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+    .evidence-card{border-top:1px solid var(--line);padding-top:18px}
+    .evidence-card strong{font-size:2.1rem;letter-spacing:-.04em;display:block;color:var(--accent)}
+    .evidence-card p{font-size:.92rem;color:var(--muted);margin-top:6px}
+    .timeline{display:grid;gap:0}
+    .step{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:20px 0;border-top:1px solid var(--line)}
+    .step:first-child{border-top:0}
+    .step .when{color:var(--accent);font-weight:800;font-size:.9rem}
+    .step p{margin:4px 0 0;color:var(--muted)}
+    .lesson{font-size:clamp(1.7rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.04em;color:var(--text);max-width:900px}
+    .quote{border-left:3px solid var(--accent);padding-left:22px;margin-top:30px}
+    .quote p{font-size:1.15rem;color:#d5ded9}
+    .cta{padding-bottom:100px}
+    .cta-box{border:1px solid var(--line);border-radius:20px;padding:clamp(28px,6vw,58px);background:linear-gradient(120deg,rgba(157,214,175,.12),rgba(217,183,123,.05))}
+    .btn{display:inline-flex;margin-top:16px;min-height:48px;align-items:center;padding:0 18px;border-radius:10px;background:var(--accent);color:#08100b;font-weight:800}
+    footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--muted);font-size:.9rem}
+    @media(max-width:850px){
+      .hero-grid,.split,.cards,.evidence,.flow{grid-template-columns:1fr}
+      .stat+.stat{border-left:0;border-top:1px solid var(--line);padding-left:0}
+      .step{grid-template-columns:1fr;gap:4px}
+      header{padding-top:65px}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav">
+      <a class="brand" href="index.html">ANDREW DURKIN</a>
+      <a class="back" href="index.html#work">← Selected Work</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="wrap">
+      <div class="eyebrow">Case Study 01 · Personal AI</div>
+      <h1>Jeppe</h1>
+      <p class="lede">A personal AI system built around a simple question: if an assistant remembers something about you, how can it know whether that information is trustworthy enough to use?</p>
+      <div class="meta">
+        <span class="pill">PERSONAL AI</span><span class="pill">PYTHON</span><span class="pill">FASTAPI</span>
+        <span class="pill">SQLITE</span><span class="pill">RAG / RETRIEVAL</span><span class="pill">LLM EVALUATION</span>
+        <span class="pill">PROVENANCE</span><span class="pill">AI-ASSISTED DEVELOPMENT</span>
+      </div>
+      <div class="hero-grid">
+        <div class="stat"><strong>Evidence-first</strong><span>Memories point back to source material and lifecycle history.</span></div>
+        <div class="stat"><strong>Multi-user</strong><span>Context, evidence, settings, and conversations stay separated by user.</span></div>
+        <div class="stat"><strong>Bounded</strong><span>Relevant context is selected under explicit count and character limits.</span></div>
+        <div class="stat"><strong>Measured</strong><span>Retrieval and answer quality are tested instead of judged by vibes.</span></div>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <div class="label">The problem</div>
+          <h2>Personalization is easy. Trustworthy personalization is not.</h2>
+        </div>
+        <div>
+          <p class="big">LLMs can sound confident even when the personal context underneath an answer is stale, conflicting, weakly sourced, or simply irrelevant.</p>
+          <p>I wanted Jeppe to treat personal context as evidence rather than invisible intuition. A useful assistant should be able to preserve what a user actually said, distinguish that from later interpretation, keep conflicts unresolved when they really are unresolved, and expose enough provenance for the user to inspect or correct the system.</p>
+          <p>That changed the project from “build a chatbot with memory” into a larger systems problem involving retrieval, trust, privacy, lifecycle state, evaluation, and model behavior.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="label">Design principles</div>
+        <h2>The system is designed to fail conservatively.</h2>
+        <div class="cards">
+          <div class="card"><h3>Evidence before interpretation</h3><p>User and assistant text are retained as evidence. Derived memories reference evidence rather than silently replacing it.</p></div>
+          <div class="card"><h3>Conflicts stay conflicts</h3><p>Competing claims are preserved together. The system does not invent a winner simply because one answer would be more convenient.</p></div>
+          <div class="card"><h3>Current permission wins</h3><p>External processing is controlled by deterministic application logic, not by hoping a model correctly interprets a privacy instruction.</p></div>
+          <div class="card"><h3>Context has to earn its place</h3><p>Retrieval is bounded and inspectable. More personal information is not automatically better information.</p></div>
+        </div>
+
+        <div class="architecture">
+          <div class="label">Logical path</div>
+          <div class="flow">
+            <div class="node"><small>01</small><strong>User request</strong><span>Authenticated conversation and processing policy</span></div>
+            <div class="node"><small>02</small><strong>Evidence + memory</strong><span>Eligible source-backed context and unresolved conflicts</span></div>
+            <div class="node"><small>03</small><strong>Context Builder</strong><span>Ranks and bounds the packet for the current task</span></div>
+            <div class="node"><small>04</small><strong>Generation</strong><span>Provider receives authorized context plus conversation evidence</span></div>
+            <div class="node"><small>05</small><strong>Audit</strong><span>Selection, dependencies, and provider-input identity are recorded</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <div class="label">What I built</div>
+          <h2>From memory storage to an evaluated context system.</h2>
+        </div>
+        <div class="cards">
+          <div class="card"><h3>Evidence-backed memory</h3><p>Source spans, correction lineage, supersession, retraction, validation state, and user review controls.</p></div>
+          <div class="card"><h3>Context retrieval</h3><p>Deterministic lexical retrieval plus optional local MiniLM semantic retrieval, conflict grouping, and explicit inclusion/exclusion reasoning.</p></div>
+          <div class="card"><h3>Context Builder</h3><p>A provider-neutral selection layer that assembles bounded personal context independently from the answer model.</p></div>
+          <div class="card"><h3>Evaluation harnesses</h3><p>Frozen synthetic scenarios, retrieval metrics, sufficiency tests, ablations, live generated-answer experiments, and blinded review.</p></div>
+          <div class="card"><h3>Multi-user foundation</h3><p>Authenticated accounts with separated conversations, context, evidence, permissions, and imported history.</p></div>
+          <div class="card"><h3>Deployment</h3><p>A working FastAPI/SQLite application running on a dedicated Windows workstation with private remote access.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="label">Evaluation</div>
+        <h2>I did not want “seems better” to be the metric.</h2>
+        <p class="big">Jeppe has separate evaluation for retrieval, context sufficiency, minimization, model planning, and generated-answer quality. Experimental systems remain separate from production authority so a promising benchmark result cannot quietly rewrite the product.</p>
+
+        <div class="evidence">
+          <div class="evidence-card">
+            <strong>16 / 19</strong>
+            <p>Required-fact recall on the improved hybrid retrieval holdout, while irrelevant inclusions were reduced from 6 to 3.</p>
+          </div>
+          <div class="evidence-card">
+            <strong>27.79%</strong>
+            <p>Personal-context reduction in the oracle minimal packets used in controlled generated-answer evaluation.</p>
+          </div>
+          <div class="evidence-card">
+            <strong>16 / 16</strong>
+            <p>Full-vs-minimal answer pairs judged quality-preserving in blinded semantic review after the live experiment.</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>The point was not to prove that less context is always better. It was to build a way to measure when extra context helps, when it is irrelevant, and when removing it changes the answer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <div class="label">Evolution</div>
+          <h2>The project changed as the questions got harder.</h2>
+        </div>
+        <div class="timeline">
+          <div class="step"><div class="when">Foundation</div><div><h3>Conversation + evidence</h3><p>Started with authenticated conversations, immutable evidence, explicit processing policy, and a provider-neutral behavior layer.</p></div></div>
+          <div class="step"><div class="when">Memory</div><div><h3>Provenance + lifecycle</h3><p>Added source-backed memories, correction and retraction controls, conflict handling, and conservative admission.</p></div></div>
+          <div class="step"><div class="when">Retrieval</div><div><h3>Selection became its own system</h3><p>Built lexical and hybrid retrieval, bounded packets, decision traces, benchmarks, and holdout validation.</p></div></div>
+          <div class="step"><div class="when">Evaluation</div><div><h3>From retrieval metrics to answer quality</h3><p>Added sufficiency tests, ablations, automated minimization, live answer experiments, and blinded review.</p></div></div>
+          <div class="step"><div class="when">Product</div><div><h3>Usability and portability</h3><p>Added multi-user setup, review tools, provider/model provenance, history import, private remote access, and a cleaner chat interface.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="label">What it taught me</div>
+        <p class="lesson">The hardest part of an AI system is often not getting the model to answer. It is deciding what information the model deserves to see before it answers.</p>
+        <div class="quote">
+          <p>Jeppe pushed me toward a systems view of AI: model capability matters, but so do provenance, permissions, retrieval quality, failure handling, evaluation design, and the interface where a human can correct the machine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-box">
+          <div class="label">Back to the portfolio</div>
+          <h2>One project. Several different kinds of AI work.</h2>
+          <p>Jeppe is the deepest technical project in the portfolio, but the same approach shows up elsewhere: understand the workflow, identify the failure points, build something useful, and measure whether it improved the situation.</p>
+          <a class="btn" href="index.html#work">View selected work →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 Andrew Durkin · Jeppe case study</div></footer>
+</body>
+</html>
