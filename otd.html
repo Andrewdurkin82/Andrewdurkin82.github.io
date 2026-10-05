@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="18-Minute OTD case study — operational workflow redesign, delivery dispatch, and performance improvement." />
+  <meta name="description" content="18-Minute OTD case study — AI-assisted operational analysis, simulation, workflow redesign, delivery dispatch, and measurable performance improvement." />
   <title>18-Minute OTD | Andrew Durkin</title>
   <style>
     :root{
@@ -81,9 +81,9 @@
 
   <main>
     <header class="wrap">
-      <div class="eyebrow">Case Study 02 · Operations</div>
+      <div class="eyebrow">Case Study 02 · AI-Assisted Operations</div>
       <h1>18-Minute OTD</h1>
-      <p class="lede">When Pizza Hut changed the scoring target, I stopped treating delivery as a single timer and rebuilt the workflow around the moments that actually controlled the outcome.</p>
+      <p class="lede">When Pizza Hut changed the scoring target, I used AI to analyze prior performance, look for timing patterns, run delivery and dispatch scenarios, and identify the workflow milestones that actually controlled the outcome.</p>
 
       <div class="scoreboard">
         <div class="metric"><strong>60+ min</strong><span>Service times during stressed periods before the redesign.</span></div>
@@ -100,7 +100,21 @@
         </div>
         <div>
           <p class="big">The new target focused on getting delivery orders out the door within 18 minutes. Under stress, the store could exceed 60-minute service times and was consistently ranked last among 30 stores.</p>
-          <p>The obvious response would have been “move faster.” That is not a process design. The useful question was which decisions controlled the clock, when those decisions should happen, and which work could be separated so one bottleneck did not poison the entire delivery queue.</p>
+          <p>The obvious response would have been “move faster.” That is not a process design. I used AI as an analysis layer to break the operation apart: which decisions controlled the clock, when they happened, what patterns showed up in prior performance, and what changed when different dispatch choices were simulated. That gave me specific hypotheses to test in the actual store instead of another motivational speech about urgency.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <div class="label">AI analysis layer</div>
+          <h2>Use the model to interrogate the operation.</h2>
+        </div>
+        <div>
+          <p class="big">I used AI to work through historical performance data and operating observations, looking for patterns that were difficult to see one shift at a time.</p>
+          <p>The useful part was not asking AI for a generic “better delivery process.” I used it to compare timing patterns, pressure-test assumptions, and run what-if scenarios around oven timing, driver availability, DoorDash handoff, doubles, and dispatch choices.</p>
+          <p>Those simulations helped turn a single 18-minute score into a sequence of testable milestones. AI could generate and compare scenarios quickly; the real store then told me which ideas survived contact with reality.</p>
         </div>
       </div>
     </section>
@@ -127,11 +141,11 @@
     <section>
       <div class="wrap split">
         <div>
-          <div class="label">Capacity thinking</div>
-          <h2>Optimize driver-minutes, not just mileage.</h2>
+          <div class="label">Simulation + capacity</div>
+          <h2>Model driver-minutes, not just mileage.</h2>
         </div>
         <div>
-          <p class="big">Geographically close orders are not automatically a good double. The useful resource is driver availability over time.</p>
+          <p class="big">One of the useful simulation questions was whether two geographically close orders were actually a good double. The better resource to model was driver availability over time, not just miles on a map.</p>
           <div class="comparison">
             <div class="box">
               <div class="big-num">40 min</div>
@@ -142,7 +156,7 @@
               <p>A structured double with 10 minutes to stop one, 7 minutes between stops, and 10 minutes back consumes about twenty-seven.</p>
             </div>
           </div>
-          <p class="note">That example saves 13 driver-minutes. The point was not “always double.” It was to make dispatch decisions based on total capacity instead of a vague sense that two addresses looked nearby.</p>
+          <p class="note">That scenario saves 13 driver-minutes. I used comparisons like this to test dispatch logic before treating it as a rule. The point was not “always double.” It was to reason about total capacity instead of relying on a vague sense that two addresses looked nearby.</p>
         </div>
       </div>
     </section>
@@ -154,7 +168,7 @@
           <h2>Four minutes in the oven became an important signal.</h2>
         </div>
         <div class="timeline">
-          <div class="row"><div class="when">Observation</div><div><h3>A hidden milestone emerged</h3><p>During the redesign, four minutes into the oven cycle proved useful as a decision point for whether the order was still on pace for the new target.</p></div></div>
+          <div class="row"><div class="when">Analysis</div><div><h3>A hidden milestone emerged</h3><p>Pattern analysis, scenario work, and live operating observation pointed to four minutes into the oven cycle as a useful decision point for whether an order was still on pace for the new target.</p></div></div>
           <div class="row"><div class="when">Adoption</div><div><h3>The milestone entered the working process</h3><p>The team began using the timing insight operationally rather than treating OTD as one undifferentiated countdown.</p></div></div>
           <div class="row"><div class="when">Later alignment</div><div><h3>Corporate scoring moved in the same direction</h3><p>Pizza Hut later began tracking four-minute oven time as a major performance metric, independently reinforcing the importance of the same stage in the workflow.</p></div></div>
         </div>
@@ -173,8 +187,8 @@
       <div class="wrap">
         <div class="cta-box">
           <div class="label">Why it belongs in an AI portfolio</div>
-          <h2>Good systems work starts before the technology.</h2>
-          <p>This project was not an AI implementation. It shows the same skill I use in AI work: identify the real constraint, model the decision points, separate fixed rules from adaptive ones, test the workflow under pressure, and measure the result.</p>
+          <h2>AI was the analysis layer, not the thing delivering the pizza.</h2>
+          <p>I used AI to analyze prior data, search for patterns, run operational scenarios, challenge assumptions, and model the decision points before testing them in the real workflow. The value was not replacing human judgment. It was expanding how quickly I could examine the system, compare alternatives, and turn messy operating experience into something testable.</p>
           <a class="btn" href="index.html#work">View selected work →</a>
         </div>
       </div>
