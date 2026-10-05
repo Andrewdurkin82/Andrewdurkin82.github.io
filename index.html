@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Andrew Durkin — AI systems, automation, CRM, workflow design, and practical problem solving.">
+<meta name="description" content="Andrew Durkin — AI systems, ERP automation, operations, product design, CRM, and practical problem solving.">
 <title>Andrew Durkin | AI Systems & Automation</title>
 <style>
 :root{--bg:#0b0f0e;--panel:#111715;--panel2:#151d1a;--text:#edf3ef;--muted:#9eaaa3;--line:#26312c;--accent:#9dd6af;--gold:#d9b77b;--max:1160px}
@@ -15,62 +15,77 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 nav{position:sticky;top:0;z-index:30;background:rgba(11,15,14,.84);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
 .nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px}
 .brand{font-weight:800;letter-spacing:-.03em}.links{display:flex;gap:22px;color:var(--muted);font-size:.94rem}.links a:hover{color:var(--text)}
-header{padding:76px 0 58px}
+header{padding:72px 0 56px}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:end}
 .eyebrow{color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-h1{margin:14px 0 20px;max-width:780px;font-size:clamp(2.8rem,6.4vw,5.6rem);line-height:.96;letter-spacing:-.06em}
-.lede{max-width:760px;color:#c6d0ca;font-size:clamp(1.08rem,2.1vw,1.35rem)}
+h1{margin:14px 0 20px;max-width:790px;font-size:clamp(2.75rem,6vw,5.25rem);line-height:.97;letter-spacing:-.058em}
+.lede{max-width:770px;color:#c6d0ca;font-size:clamp(1.08rem,2vw,1.32rem)}
 .intro-card{border:1px solid var(--line);background:rgba(17,23,21,.78);border-radius:18px;padding:24px}
 .intro-card .kicker{color:var(--gold);font-size:.76rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase}
 .intro-card p{color:#c2ccc6;margin:10px 0 0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 17px;border:1px solid var(--line);border-radius:10px;font-weight:750}
 .btn.primary{background:var(--accent);color:#08100b;border-color:var(--accent)}
-.proof{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);margin-top:42px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .proof div{padding:17px 18px 17px 0;color:var(--muted);font-size:.92rem}
 .proof div+div{border-left:1px solid var(--line);padding-left:18px}.proof strong{display:block;color:var(--text);font-size:1rem;margin-bottom:2px}
 section{padding:78px 0}
-.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:end;margin-bottom:34px}
+.section-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:end;margin-bottom:38px}
 .section-head h2{margin:0;font-size:clamp(2.3rem,5vw,4.4rem);line-height:.98;letter-spacing:-.055em}
-.section-head p{margin:0;color:var(--muted);max-width:650px}
-.reel-shell{display:grid;grid-template-columns:60px minmax(0,1fr) 60px;gap:14px;align-items:center}
-.reel-btn{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;font-size:1.35rem}
-.reel-btn:hover{border-color:#45574e}
-.reel-viewport{position:relative;height:430px;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.006))}
-.reel-track{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);transition:transform .46s cubic-bezier(.2,.75,.25,1)}
-.reel-card{position:absolute;left:6%;right:6%;min-height:250px;padding:26px 28px;border:1px solid var(--line);border-radius:18px;background:rgba(17,23,21,.94);opacity:.25;transform:scale(.91);filter:blur(.2px);transition:all .46s cubic-bezier(.2,.75,.25,1);pointer-events:none}
-.reel-card.active{opacity:1;transform:scale(1);filter:none;pointer-events:auto;background:radial-gradient(circle at 86% 12%,rgba(157,214,175,.12),transparent 18rem),var(--panel)}
-.reel-card.near{opacity:.48;transform:scale(.95)}
-.reel-top{display:flex;justify-content:space-between;gap:16px;align-items:center}
-.num{color:var(--muted);font-size:.79rem;letter-spacing:.12em}
-.capability{color:var(--gold);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.reel-card h3{font-size:clamp(2.1rem,4.5vw,4rem);letter-spacing:-.05em;line-height:.98;margin:16px 0 10px}
-.reel-card .hook{font-size:1.12rem;color:#d4ddd8;max-width:840px;margin:0 0 12px}
-.reel-card .detail{color:var(--muted);max-width:850px;margin:0}
+.section-head p{margin:0;color:var(--muted);max-width:700px}
+.specialization-layout{display:grid;grid-template-columns:minmax(480px,.95fr) minmax(0,1.05fr);gap:42px;align-items:center}
+.dial-wrap{position:relative;max-width:620px;margin:auto;width:100%;aspect-ratio:1}
+.dial-ring{position:absolute;inset:12%;border:1px solid #33413a;border-radius:50%;box-shadow:inset 0 0 60px rgba(157,214,175,.025),0 0 80px rgba(0,0,0,.25)}
+.dial-ring:before,.dial-ring:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.035)}
+.dial-ring:before{inset:11%}.dial-ring:after{inset:27%}
+.selector-mark{position:absolute;left:50%;top:1.7%;transform:translateX(-50%);z-index:10;text-align:center;color:var(--gold);font-size:.67rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+.selector-mark:after{content:"";display:block;width:0;height:0;margin:6px auto 0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid var(--gold);filter:drop-shadow(0 0 9px rgba(217,183,123,.4))}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:31%;aspect-ratio:1;border-radius:50%;border:1px solid #394841;background:radial-gradient(circle at 45% 35%,rgba(157,214,175,.11),transparent 55%),var(--panel2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;z-index:4;box-shadow:0 18px 55px rgba(0,0,0,.32)}
+.hub small{color:var(--gold);font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:.63rem}
+.hub strong{font-size:clamp(1.1rem,2.3vw,1.65rem);line-height:1.05;letter-spacing:-.035em;margin:8px 0 5px}
+.hub span{color:var(--muted);font-size:.74rem}
+.spec-node{position:absolute;transform:translate(-50%,-50%);width:158px;min-height:84px;border-radius:15px;border:1px solid var(--line);background:rgba(17,23,21,.96);color:var(--muted);padding:12px 10px;cursor:pointer;text-align:center;z-index:6;transition:left .5s cubic-bezier(.2,.75,.25,1),top .5s cubic-bezier(.2,.75,.25,1),transform .28s ease,background .28s ease,border-color .28s ease,box-shadow .28s ease,color .28s ease}
+.spec-node:hover{border-color:#4a5d53;color:var(--text);transform:translate(-50%,-50%) scale(1.04)}
+.spec-node .n{display:block;color:var(--gold);font-size:.65rem;font-weight:900;letter-spacing:.12em;margin-bottom:4px}
+.spec-node .t{display:block;color:inherit;font-weight:800;line-height:1.08;font-size:.93rem}
+.spec-node.active{background:linear-gradient(160deg,rgba(157,214,175,.18),rgba(17,23,21,.98));border-color:var(--accent);color:var(--text);box-shadow:0 0 0 4px rgba(157,214,175,.08),0 12px 36px rgba(0,0,0,.35);transform:translate(-50%,-50%) scale(1.09)}
+.spin-controls{position:absolute;left:50%;bottom:1.8%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;z-index:12}
+.spin-btn{width:43px;height:43px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;font-size:1.15rem}
+.spin-btn:hover{border-color:var(--accent)}
+.spin-label{color:var(--muted);font-size:.69rem;text-transform:uppercase;letter-spacing:.11em;font-weight:800}
+.detail-panel{border:1px solid var(--line);border-radius:22px;background:radial-gradient(circle at 88% 7%,rgba(157,214,175,.095),transparent 18rem),var(--panel);padding:30px;min-height:410px;display:flex;flex-direction:column;justify-content:space-between}
+.detail-top{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.detail-count{color:var(--gold);font-size:.76rem;font-weight:900;letter-spacing:.12em}.detail-type{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}
+.detail-panel h3{font-size:clamp(2.4rem,5vw,4.6rem);line-height:.96;letter-spacing:-.055em;margin:22px 0 12px}
+.detail-panel .hook{font-size:1.14rem;color:#d4ddd8;max-width:720px;margin:0 0 13px}.detail-panel .detail{color:var(--muted);max-width:760px;margin:0}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.tag{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:.74rem;color:#b8c2bc}
-.card-link{display:inline-flex;margin-top:22px;color:var(--accent);font-weight:800}
-.reel-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
-.dot{width:8px;height:8px;border-radius:50%;border:0;background:#3c4943;cursor:pointer;padding:0}.dot.active{background:var(--accent);width:28px;border-radius:999px}
-.reel-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:10px}
-.cap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:28px}
-.cap{border-top:1px solid var(--line);padding-top:14px}.cap strong{display:block;color:var(--text);font-size:.95rem}.cap span{color:var(--muted);font-size:.83rem}
+.detail-link{display:inline-flex;margin-top:25px;color:var(--accent);font-weight:800}.detail-link.muted{color:var(--muted)}
+.legend{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:30px}
+.legend button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:11px;padding:11px 8px;cursor:pointer;min-height:66px}
+.legend button strong{display:block;color:var(--text);font-size:.82rem}.legend button span{font-size:.7rem}.legend button.active{border-color:var(--accent);background:rgba(157,214,175,.07);color:var(--accent)}
+.interaction-note{text-align:center;color:var(--muted);font-size:.83rem;margin-top:13px}
 .about-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:70px}.about-copy{font-size:1.12rem;color:#c6d0ca}.about-copy p:first-child{margin-top:0}
 .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}.skill{padding:15px 17px;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:#c9d2cd}
 .cta{padding-bottom:96px}.cta-box{border:1px solid var(--line);border-radius:20px;padding:clamp(28px,6vw,58px);background:linear-gradient(120deg,rgba(157,214,175,.11),rgba(217,183,123,.055))}
 .cta-box h2{font-size:clamp(2.4rem,5.5vw,4.8rem);line-height:.98;letter-spacing:-.055em;margin:0 0 16px;max-width:900px}
 .cta-box p{color:#c7d1cb;max-width:720px}
 footer{border-top:1px solid var(--line);padding:28px 0 46px;color:var(--muted);font-size:.9rem}.foot{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:1000px){.specialization-layout{grid-template-columns:1fr}.dial-wrap{max-width:600px}.detail-panel{min-height:360px}}
 @media(max-width:860px){
  .hero-grid,.section-head,.about-grid{grid-template-columns:1fr;gap:24px}
- .proof{grid-template-columns:1fr 1fr}.proof div:nth-child(3){border-left:0;border-top:1px solid var(--line);padding-left:0}.proof div:nth-child(4){border-top:1px solid var(--line)}
- .reel-shell{grid-template-columns:1fr}.reel-btn{display:none}.reel-viewport{height:470px}.reel-card{left:4%;right:4%}
- .cap-grid{grid-template-columns:1fr 1fr}.skills{grid-template-columns:1fr}.links a:not(:last-child){display:none}.foot{flex-direction:column}
+ .proof{grid-template-columns:1fr}.proof div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}
+ .links a:not(:last-child){display:none}.skills{grid-template-columns:1fr}.foot{flex-direction:column}.legend{grid-template-columns:repeat(5,1fr)}
 }
-@media(max-width:560px){.proof,.cap-grid{grid-template-columns:1fr}.proof div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}.reel-viewport{height:520px}}
+@media(max-width:640px){
+ .dial-wrap{max-width:440px}.spec-node{width:112px;min-height:70px;padding:9px 7px}.spec-node .t{font-size:.76rem}.spec-node .n{font-size:.57rem}
+ .hub{width:34%;padding:10px}.hub strong{font-size:1rem}.hub span{display:none}.hub small{font-size:.52rem}
+ .detail-panel{padding:23px}.legend{grid-template-columns:1fr 1fr}.legend button:last-child{grid-column:1/-1}
+ .spin-label{display:none}
+}
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><a class="brand" href="#top">ANDREW DURKIN</a><div class="links"><a href="#work">Selected Work</a><a href="#about">About</a><a href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></nav>
+<nav><div class="wrap nav"><a class="brand" href="#top">ANDREW DURKIN</a><div class="links"><a href="#specializations">Specializations</a><a href="#about">About</a><a href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></nav>
 
 <main id="top">
 <header class="wrap">
@@ -79,91 +94,71 @@ footer{border-top:1px solid var(--line);padding:28px 0 46px;color:var(--muted);f
       <div class="eyebrow">AI Systems · Automation · Workflow Design</div>
       <h1>I turn operational friction into working systems.</h1>
       <p class="lede">I work at the intersection of AI, higher education, enterprise systems, and frontline operations. My projects start with a real constraint, then move through analysis, prototyping, testing, and iteration until the workflow is measurably better.</p>
-      <div class="hero-actions"><a class="btn primary" href="#work">Explore the work</a><a class="btn" href="#about">How I think</a></div>
+      <div class="hero-actions"><a class="btn primary" href="#specializations">Explore 5 specializations</a><a class="btn" href="#about">How I think</a></div>
     </div>
     <aside class="intro-card">
       <div class="kicker">Current direction</div>
       <p>I’m building toward AI and automation roles where systems thinking matters as much as model choice: context and retrieval, ERP workflow automation, CRM design, operational analysis, and tools built around the people who actually use them.</p>
     </aside>
   </div>
-
   <div class="proof">
-    <div><strong>AI systems</strong>Retrieval, provenance, evaluation, model behavior.</div>
-    <div><strong>Enterprise workflow</strong>ERP automation and exception handling.</div>
-    <div><strong>Operations</strong>Process redesign tied to measurable performance.</div>
-    <div><strong>CRM / case management</strong>Tracking, ownership, continuity, follow-up.</div>
+    <div><strong>Start with the work</strong>Understand the people, constraints, information, and failure points first.</div>
+    <div><strong>Build the smallest useful system</strong>Prototype quickly, then add complexity only when the problem earns it.</div>
+    <div><strong>Measure what changed</strong>Use benchmarks, operational metrics, and failure analysis instead of “seems better.”</div>
   </div>
 </header>
 
-<section id="work">
+<section id="specializations">
 <div class="wrap">
   <div class="section-head">
-    <h2>Selected Work</h2>
-    <p>Five different settings, one recurring pattern: find where information or decisions break down, then build a system around the actual work instead of forcing the work around the software.</p>
+    <h2>5 Specializations</h2>
+    <p>These are not five unrelated projects. They are five ways I approach systems problems. Spin the selector or choose a category to see the work that represents each specialization.</p>
   </div>
 
-  <div class="reel-shell">
-    <button class="reel-btn" id="prevBtn" aria-label="Previous project">↑</button>
-    <div class="reel-viewport" id="reelViewport" tabindex="0" aria-label="Interactive project reel">
-      <div class="reel-track" id="reelTrack">
-        <article class="reel-card" data-index="0">
-          <div class="reel-top"><span class="num">01 / PERSONAL AI</span><span class="capability">AI systems + evaluation</span></div>
-          <h3>Jeppe</h3>
-          <p class="hook">A personal AI system designed to know what it knows, where it learned it, and when uncertainty should remain unresolved.</p>
-          <p class="detail">Evidence-backed context, provenance, user correction, bounded retrieval, multi-user separation, provider/model transparency, history import, and systematic retrieval evaluation.</p>
-          <div class="tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">PYTHON</span><span class="tag">EVALUATION</span></div>
-          <a class="card-link" href="jeppe.html">Open case study →</a>
-        </article>
+  <div class="specialization-layout">
+    <div>
+      <div class="dial-wrap" id="dial" tabindex="0" aria-label="Interactive specialization selector. Use arrow keys, mouse wheel, swipe, or category buttons.">
+        <div class="dial-ring"></div>
+        <div class="selector-mark">Selected</div>
+        <div class="hub">
+          <small>Andrew Durkin</small>
+          <strong id="hubTitle">AI Systems</strong>
+          <span>1 of 5 specialization areas</span>
+        </div>
 
-        <article class="reel-card" data-index="1">
-          <div class="reel-top"><span class="num">02 / ENTERPRISE SYSTEMS</span><span class="capability">ERP + automation</span></div>
-          <h3>Banner ERP Automation</h3>
-          <p class="hook">Turned repetitive student ERP work into keyboard-driven workflows while accounting for messy real-world exceptions.</p>
-          <p class="detail">Designed hotkey workflows around Banner student ERP tasks and adapted the process when historical records changed interface behavior and blocked the happy path.</p>
-          <div class="tags"><span class="tag">ERP</span><span class="tag">AUTOMATION</span><span class="tag">EXCEPTION HANDLING</span><span class="tag">HIGHER ED</span></div>
-          <span class="card-link">Case study in progress</span>
-        </article>
+        <button class="spec-node" data-index="0"><span class="n">01</span><span class="t">AI Systems</span></button>
+        <button class="spec-node" data-index="1"><span class="n">02</span><span class="t">ERP Automation</span></button>
+        <button class="spec-node" data-index="2"><span class="n">03</span><span class="t">Operations</span></button>
+        <button class="spec-node" data-index="3"><span class="n">04</span><span class="t">Product / UX</span></button>
+        <button class="spec-node" data-index="4"><span class="n">05</span><span class="t">CRM Systems</span></button>
 
-        <article class="reel-card" data-index="2">
-          <div class="reel-top"><span class="num">03 / OPERATIONS</span><span class="capability">Process analysis</span></div>
-          <h3>18-Minute OTD</h3>
-          <p class="hook">A changed performance target required a different operating model, not just “move faster.”</p>
-          <p class="detail">Redesigned delivery decision points around the 18-minute target. The store moved from last out of 30 stores during stressed periods to typically ranking between 5th and 10th, while sales also increased.</p>
-          <div class="tags"><span class="tag">OPERATIONS</span><span class="tag">CAPACITY</span><span class="tag">WORKFLOW DESIGN</span></div>
-          <a class="card-link" href="otd.html">Open case study →</a>
-        </article>
-
-        <article class="reel-card" data-index="3">
-          <div class="reel-top"><span class="num">04 / PRODUCT + UX</span><span class="capability">Rapid prototyping</span></div>
-          <h3>Sho Control</h3>
-          <p class="hook">A browser-based control layer built around an existing digital-signage system instead of replacing the whole stack.</p>
-          <p class="detail">Live preview, queue management, reusable slide library, scheduling, uploads, and operator-focused controls designed around existing hardware and software.</p>
-          <div class="tags"><span class="tag">WEB APP</span><span class="tag">UX</span><span class="tag">DIGITAL SIGNAGE</span></div>
-          <span class="card-link">Case study in progress</span>
-        </article>
-
-        <article class="reel-card" data-index="4">
-          <div class="reel-top"><span class="num">05 / CRM + CASE MANAGEMENT</span><span class="capability">Information systems</span></div>
-          <h3>CRM Systems</h3>
-          <p class="hook">Three prototypes in two industries, each solving a version of the same problem: fragmented context, unclear ownership, and lost follow-up.</p>
-          <p class="detail">Speira for student service continuity, Nostos for returning-student recruitment tracking, and a Pizza Hut Customer Care CRM for issue history, recovery, follow-up, and repeat-pattern visibility.</p>
-          <div class="tags"><span class="tag">CRM</span><span class="tag">CASE MANAGEMENT</span><span class="tag">SQLITE</span><span class="tag">ANALYTICS</span></div>
-          <a class="card-link" href="crm.html">Open portfolio study →</a>
-        </article>
+        <div class="spin-controls">
+          <button class="spin-btn" id="prevBtn" aria-label="Spin to previous specialization">↺</button>
+          <span class="spin-label">Spin</span>
+          <button class="spin-btn" id="nextBtn" aria-label="Spin to next specialization">↻</button>
+        </div>
       </div>
+      <div class="interaction-note">Click a category, spin the dial, scroll over it, swipe, or use ← / →.</div>
     </div>
-    <button class="reel-btn" id="nextBtn" aria-label="Next project">↓</button>
+
+    <article class="detail-panel" id="detailPanel" aria-live="polite">
+      <div>
+        <div class="detail-top"><span class="detail-count" id="detailCount">01 / 05</span><span class="detail-type" id="detailType">AI systems + evaluation</span></div>
+        <h3 id="detailTitle">Jeppe</h3>
+        <p class="hook" id="detailHook">A personal AI system designed to know what it knows, where it learned it, and when uncertainty should remain unresolved.</p>
+        <p class="detail" id="detailText">Evidence-backed context, provenance, user correction, bounded retrieval, multi-user separation, provider/model transparency, history import, and systematic retrieval evaluation.</p>
+        <div class="tags" id="detailTags"></div>
+      </div>
+      <div id="detailAction"></div>
+    </article>
   </div>
 
-  <div class="reel-dots" id="reelDots" aria-label="Choose project"></div>
-  <div class="reel-note">Scroll, swipe, use ↑ / ↓, or click the controls.</div>
-
-  <div class="cap-grid">
-    <div class="cap"><strong>Jeppe</strong><span>AI context + evaluation</span></div>
-    <div class="cap"><strong>Banner</strong><span>ERP + workflow automation</span></div>
-    <div class="cap"><strong>OTD</strong><span>Operations + metrics</span></div>
-    <div class="cap"><strong>Sho Control</strong><span>Product + UX</span></div>
-    <div class="cap"><strong>CRM Systems</strong><span>Continuity + case management</span></div>
+  <div class="legend" id="legend">
+    <button data-index="0"><strong>01 · AI Systems</strong><span>Jeppe</span></button>
+    <button data-index="1"><strong>02 · ERP Automation</strong><span>Banner</span></button>
+    <button data-index="2"><strong>03 · Operations</strong><span>18-Minute OTD</span></button>
+    <button data-index="3"><strong>04 · Product / UX</strong><span>Sho Control</span></button>
+    <button data-index="4"><strong>05 · CRM Systems</strong><span>Speira · Nostos · Customer Care</span></button>
   </div>
 </div>
 </section>
@@ -189,7 +184,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 46px;color:var(--muted);f
 <div class="wrap"><div class="cta-box">
   <h2>Technology matters. Whether it actually improves the work matters more.</h2>
   <p>This portfolio documents the systems, experiments, operational redesigns, and prototypes behind that approach.</p>
-  <div class="hero-actions"><a class="btn primary" href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub profile ↗</a><a class="btn" href="#work">Back to the reel</a></div>
+  <div class="hero-actions"><a class="btn primary" href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub profile ↗</a><a class="btn" href="#specializations">Back to specializations</a></div>
 </div></div>
 </section>
 </main>
@@ -198,58 +193,116 @@ footer{border-top:1px solid var(--line);padding:28px 0 46px;color:var(--muted);f
 
 <script>
 (() => {
-  const cards=[...document.querySelectorAll('.reel-card')];
-  const dots=document.getElementById('reelDots');
-  const viewport=document.getElementById('reelViewport');
-  let current=0, wheelLock=false, touchY=null;
-  const spacing=285;
+  const projects=[
+    {
+      spec:'AI Systems',type:'AI systems + evaluation',title:'Jeppe',
+      hook:'A personal AI system designed to know what it knows, where it learned it, and when uncertainty should remain unresolved.',
+      detail:'Evidence-backed context, provenance, user correction, bounded retrieval, multi-user separation, provider/model transparency, history import, and systematic retrieval evaluation.',
+      tags:['LLMs','RAG','PYTHON','EVALUATION'],href:'jeppe.html',action:'Open case study →'
+    },
+    {
+      spec:'ERP Automation',type:'Enterprise systems + workflow automation',title:'Banner ERP Automation',
+      hook:'Turned repetitive student ERP work into keyboard-driven workflows while accounting for messy real-world exceptions.',
+      detail:'Designed hotkey workflows around Banner student ERP tasks and adapted the process when historical records changed interface behavior and blocked the happy path.',
+      tags:['ERP','AUTOMATION','EXCEPTION HANDLING','HIGHER ED'],href:null,action:'Case study in progress'
+    },
+    {
+      spec:'Operations',type:'Process analysis + measurable improvement',title:'18-Minute OTD',
+      hook:'A changed performance target required a different operating model, not just “move faster.”',
+      detail:'Redesigned delivery decision points around the 18-minute target. The store moved from last out of 30 stores during stressed periods to typically ranking between 5th and 10th, while sales also increased.',
+      tags:['OPERATIONS','CAPACITY','WORKFLOW DESIGN'],href:'otd.html',action:'Open case study →'
+    },
+    {
+      spec:'Product / UX',type:'Rapid prototyping + operator experience',title:'Sho Control',
+      hook:'A browser-based control layer built around an existing digital-signage system instead of replacing the whole stack.',
+      detail:'Live preview, queue management, reusable slide library, scheduling, uploads, and operator-focused controls designed around existing hardware and software.',
+      tags:['WEB APP','UX','DIGITAL SIGNAGE'],href:null,action:'Case study in progress'
+    },
+    {
+      spec:'CRM Systems',type:'CRM + case management',title:'Speira · Nostos · Customer Care',
+      hook:'Three prototypes in two industries, each solving a version of the same problem: fragmented context, unclear ownership, and lost follow-up.',
+      detail:'Speira for student service continuity, Nostos for returning-student recruitment tracking, and a Pizza Hut Customer Care CRM for issue history, recovery, follow-up, and repeat-pattern visibility.',
+      tags:['CRM','CASE MANAGEMENT','SQLITE','ANALYTICS'],href:'crm.html',action:'Open portfolio study →'
+    }
+  ];
 
-  cards.forEach((_,i)=>{
-    const d=document.createElement('button');
-    d.className='dot'; d.setAttribute('aria-label','Show project '+(i+1));
-    d.addEventListener('click',()=>setCurrent(i));
-    dots.appendChild(d);
-  });
-  const dotEls=[...dots.children];
+  const dial=document.getElementById('dial');
+  const nodes=[...document.querySelectorAll('.spec-node')];
+  const legends=[...document.querySelectorAll('#legend button')];
+  const hubTitle=document.getElementById('hubTitle');
+  const hubMeta=document.querySelector('.hub span');
+  const detailCount=document.getElementById('detailCount');
+  const detailType=document.getElementById('detailType');
+  const detailTitle=document.getElementById('detailTitle');
+  const detailHook=document.getElementById('detailHook');
+  const detailText=document.getElementById('detailText');
+  const detailTags=document.getElementById('detailTags');
+  const detailAction=document.getElementById('detailAction');
+  let current=0,wheelLock=false,touchX=null;
+
+  function positionNodes(){
+    nodes.forEach((node,i)=>{
+      const delta=i-current;
+      const angle=(-90 + delta*72) * Math.PI/180;
+      const radius=37;
+      const x=50 + Math.cos(angle)*radius;
+      const y=50 + Math.sin(angle)*radius;
+      node.style.left=x+'%';
+      node.style.top=y+'%';
+      node.classList.toggle('active',i===current);
+      node.setAttribute('aria-pressed',i===current?'true':'false');
+    });
+  }
+
+  function render(){
+    const p=projects[current];
+    positionNodes();
+    legends.forEach((b,i)=>b.classList.toggle('active',i===current));
+    hubTitle.textContent=p.spec;
+    hubMeta.textContent=(current+1)+' of 5 specialization areas';
+    detailCount.textContent=String(current+1).padStart(2,'0')+' / 05';
+    detailType.textContent=p.type;
+    detailTitle.textContent=p.title;
+    detailHook.textContent=p.hook;
+    detailText.textContent=p.detail;
+    detailTags.innerHTML=p.tags.map(t=>'<span class="tag">'+t+'</span>').join('');
+    detailAction.innerHTML=p.href
+      ? '<a class="detail-link" href="'+p.href+'">'+p.action+'</a>'
+      : '<span class="detail-link muted">'+p.action+'</span>';
+  }
 
   function setCurrent(i){
-    current=(i+cards.length)%cards.length;
-    cards.forEach((card,idx)=>{
-      let delta=idx-current;
-      if(delta>cards.length/2) delta-=cards.length;
-      if(delta<-cards.length/2) delta+=cards.length;
-      card.style.top=(delta*spacing-125)+'px';
-      card.classList.toggle('active',delta===0);
-      card.classList.toggle('near',Math.abs(delta)===1);
-      card.setAttribute('aria-hidden',delta===0?'false':'true');
-    });
-    dotEls.forEach((d,i)=>d.classList.toggle('active',i===current));
+    current=(i+projects.length)%projects.length;
+    render();
   }
   function next(){setCurrent(current+1)}
   function prev(){setCurrent(current-1)}
 
+  nodes.forEach((n,i)=>n.addEventListener('click',()=>setCurrent(i)));
+  legends.forEach((n,i)=>n.addEventListener('click',()=>setCurrent(i)));
   document.getElementById('nextBtn').addEventListener('click',next);
   document.getElementById('prevBtn').addEventListener('click',prev);
-  viewport.addEventListener('keydown',e=>{
-    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();next()}
-    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();prev()}
+
+  dial.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();next()}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prev()}
   });
-  viewport.addEventListener('wheel',e=>{
+  dial.addEventListener('wheel',e=>{
     e.preventDefault();
     if(wheelLock)return;
     wheelLock=true;
     e.deltaY>0?next():prev();
     setTimeout(()=>wheelLock=false,420);
   },{passive:false});
-  viewport.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY},{passive:true});
-  viewport.addEventListener('touchend',e=>{
-    if(touchY===null)return;
-    const dy=e.changedTouches[0].clientY-touchY;
-    if(Math.abs(dy)>35) dy<0?next():prev();
-    touchY=null;
+  dial.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
+  dial.addEventListener('touchend',e=>{
+    if(touchX===null)return;
+    const dx=e.changedTouches[0].clientX-touchX;
+    if(Math.abs(dx)>35) dx<0?next():prev();
+    touchX=null;
   },{passive:true});
 
-  setCurrent(0);
+  render();
 })();
 </script>
 </body>
