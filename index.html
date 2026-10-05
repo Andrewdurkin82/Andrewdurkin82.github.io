@@ -1,243 +1,256 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Andrew Durkin — AI systems, automation, workflow design, and practical problem solving." />
-  <title>Andrew Durkin | AI Systems & Automation</title>
-  <style>
-    :root {
-      --bg: #0b0f0e;
-      --panel: #111715;
-      --panel-2: #151d1a;
-      --text: #edf3ef;
-      --muted: #9eaaa3;
-      --line: #26312c;
-      --accent: #9dd6af;
-      --accent-2: #d9b77b;
-      --max: 1160px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(circle at 85% 8%, rgba(94, 137, 107, .18), transparent 28rem),
-        radial-gradient(circle at 12% 26%, rgba(217, 183, 123, .08), transparent 26rem),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-    nav {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(11,15,14,.82);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { font-weight: 800; letter-spacing: -.03em; }
-    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: .95rem; }
-    .nav-links a:hover { color: var(--text); }
-    header { padding: 100px 0 72px; }
-    .eyebrow { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; }
-    h1 { margin: 14px 0 22px; max-width: 980px; font-size: clamp(3.3rem, 8vw, 7.4rem); line-height: .92; letter-spacing: -.065em; }
-    .lede { max-width: 770px; color: #c5cec9; font-size: clamp(1.1rem, 2.3vw, 1.45rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 1px solid var(--line); border-radius: 10px; font-weight: 700; }
-    .btn.primary { background: var(--accent); color: #08100b; border-color: var(--accent); }
-    .btn:hover { transform: translateY(-1px); }
-    .proof-strip { margin-top: 54px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .proof { padding: 18px 0; color: var(--muted); }
-    .proof + .proof { padding-left: 24px; border-left: 1px solid var(--line); }
-    .proof strong { display: block; color: var(--text); font-size: 1.08rem; margin-bottom: 2px; }
-    section { padding: 84px 0; }
-    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
-    .section-head h2 { margin: 0; font-size: clamp(2.1rem, 5vw, 4.4rem); letter-spacing: -.05em; }
-    .section-head p { margin: 0; max-width: 520px; color: var(--muted); }
-    .projects { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
-    .project {
-      min-height: 330px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.008));
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color .2s ease, transform .2s ease, background .2s ease;
-    }
-    .project:hover { transform: translateY(-3px); border-color: #3d4e46; background: var(--panel); }
-    .project.featured { min-height: 500px; grid-row: span 2; background: radial-gradient(circle at 85% 12%, rgba(157,214,175,.14), transparent 18rem), var(--panel); }
-    .num { color: var(--muted); font-size: .82rem; letter-spacing: .12em; }
-    .project h3 { margin: 16px 0 12px; font-size: clamp(2rem, 4vw, 3.7rem); letter-spacing: -.05em; }
-    .project.featured h3 { font-size: clamp(3rem, 6vw, 5.7rem); }
-    .project .hook { max-width: 730px; color: #d4ddd8; font-size: 1.15rem; }
-    .project .detail { color: var(--muted); max-width: 760px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-    .tag { border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; font-size: .76rem; color: #b7c2bc; letter-spacing: .04em; }
-    .project-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); }
-    .project-footer strong { color: var(--accent); }
-    .wide { grid-column: 1 / -1; min-height: 260px; }
-    .case-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 18px; }
-    .case { border-top: 1px solid var(--line); padding-top: 18px; }
-    .case span { display: block; color: var(--accent-2); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
-    .case p { margin: 0; color: #c4cec8; }
-    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
-    .about-copy { color: #c6d0ca; font-size: 1.15rem; }
-    .about-copy p:first-child { margin-top: 0; }
-    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .skill { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; color: #c9d2cd; }
-    .cta { padding-bottom: 100px; }
-    .cta-box { border: 1px solid var(--line); border-radius: 20px; padding: clamp(28px, 6vw, 64px); background: linear-gradient(120deg, rgba(157,214,175,.11), rgba(217,183,123,.06)); }
-    .cta-box h2 { font-size: clamp(2.6rem, 6vw, 5.4rem); line-height: .95; letter-spacing: -.055em; margin: 0 0 18px; max-width: 900px; }
-    .cta-box p { color: #c7d1cb; max-width: 700px; }
-    footer { border-top: 1px solid var(--line); padding: 28px 0 48px; color: var(--muted); font-size: .9rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
-    @media (max-width: 820px) {
-      .nav-links a:not(:last-child) { display: none; }
-      header { padding-top: 72px; }
-      .proof-strip, .projects, .about-grid, .case-grid { grid-template-columns: 1fr; }
-      .proof + .proof { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-      .project.featured { grid-row: auto; min-height: 420px; }
-      .wide { grid-column: auto; }
-      .section-head { display: block; }
-      .section-head p { margin-top: 12px; }
-      .skills { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Andrew Durkin — AI systems, automation, CRM, workflow design, and practical problem solving.">
+<title>Andrew Durkin | AI Systems & Automation</title>
+<style>
+:root{--bg:#0b0f0e;--panel:#111715;--panel2:#151d1a;--text:#edf3ef;--muted:#9eaaa3;--line:#26312c;--accent:#9dd6af;--gold:#d9b77b;--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 84% 9%,rgba(94,137,107,.17),transparent 28rem),radial-gradient(circle at 9% 24%,rgba(217,183,123,.07),transparent 25rem),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}button{font:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+nav{position:sticky;top:0;z-index:30;background:rgba(11,15,14,.84);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{font-weight:800;letter-spacing:-.03em}.links{display:flex;gap:22px;color:var(--muted);font-size:.94rem}.links a:hover{color:var(--text)}
+header{padding:76px 0 58px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:end}
+.eyebrow{color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+h1{margin:14px 0 20px;max-width:780px;font-size:clamp(2.8rem,6.4vw,5.6rem);line-height:.96;letter-spacing:-.06em}
+.lede{max-width:760px;color:#c6d0ca;font-size:clamp(1.08rem,2.1vw,1.35rem)}
+.intro-card{border:1px solid var(--line);background:rgba(17,23,21,.78);border-radius:18px;padding:24px}
+.intro-card .kicker{color:var(--gold);font-size:.76rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase}
+.intro-card p{color:#c2ccc6;margin:10px 0 0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 17px;border:1px solid var(--line);border-radius:10px;font-weight:750}
+.btn.primary{background:var(--accent);color:#08100b;border-color:var(--accent)}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{padding:17px 18px 17px 0;color:var(--muted);font-size:.92rem}
+.proof div+div{border-left:1px solid var(--line);padding-left:18px}.proof strong{display:block;color:var(--text);font-size:1rem;margin-bottom:2px}
+section{padding:78px 0}
+.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:end;margin-bottom:34px}
+.section-head h2{margin:0;font-size:clamp(2.3rem,5vw,4.4rem);line-height:.98;letter-spacing:-.055em}
+.section-head p{margin:0;color:var(--muted);max-width:650px}
+.reel-shell{display:grid;grid-template-columns:60px minmax(0,1fr) 60px;gap:14px;align-items:center}
+.reel-btn{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;font-size:1.35rem}
+.reel-btn:hover{border-color:#45574e}
+.reel-viewport{position:relative;height:430px;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.006))}
+.reel-track{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);transition:transform .46s cubic-bezier(.2,.75,.25,1)}
+.reel-card{position:absolute;left:6%;right:6%;min-height:250px;padding:26px 28px;border:1px solid var(--line);border-radius:18px;background:rgba(17,23,21,.94);opacity:.25;transform:scale(.91);filter:blur(.2px);transition:all .46s cubic-bezier(.2,.75,.25,1);pointer-events:none}
+.reel-card.active{opacity:1;transform:scale(1);filter:none;pointer-events:auto;background:radial-gradient(circle at 86% 12%,rgba(157,214,175,.12),transparent 18rem),var(--panel)}
+.reel-card.near{opacity:.48;transform:scale(.95)}
+.reel-top{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.num{color:var(--muted);font-size:.79rem;letter-spacing:.12em}
+.capability{color:var(--gold);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.reel-card h3{font-size:clamp(2.1rem,4.5vw,4rem);letter-spacing:-.05em;line-height:.98;margin:16px 0 10px}
+.reel-card .hook{font-size:1.12rem;color:#d4ddd8;max-width:840px;margin:0 0 12px}
+.reel-card .detail{color:var(--muted);max-width:850px;margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.tag{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:.74rem;color:#b8c2bc}
+.card-link{display:inline-flex;margin-top:22px;color:var(--accent);font-weight:800}
+.reel-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.dot{width:8px;height:8px;border-radius:50%;border:0;background:#3c4943;cursor:pointer;padding:0}.dot.active{background:var(--accent);width:28px;border-radius:999px}
+.reel-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:10px}
+.cap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:28px}
+.cap{border-top:1px solid var(--line);padding-top:14px}.cap strong{display:block;color:var(--text);font-size:.95rem}.cap span{color:var(--muted);font-size:.83rem}
+.about-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:70px}.about-copy{font-size:1.12rem;color:#c6d0ca}.about-copy p:first-child{margin-top:0}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}.skill{padding:15px 17px;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:#c9d2cd}
+.cta{padding-bottom:96px}.cta-box{border:1px solid var(--line);border-radius:20px;padding:clamp(28px,6vw,58px);background:linear-gradient(120deg,rgba(157,214,175,.11),rgba(217,183,123,.055))}
+.cta-box h2{font-size:clamp(2.4rem,5.5vw,4.8rem);line-height:.98;letter-spacing:-.055em;margin:0 0 16px;max-width:900px}
+.cta-box p{color:#c7d1cb;max-width:720px}
+footer{border-top:1px solid var(--line);padding:28px 0 46px;color:var(--muted);font-size:.9rem}.foot{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:860px){
+ .hero-grid,.section-head,.about-grid{grid-template-columns:1fr;gap:24px}
+ .proof{grid-template-columns:1fr 1fr}.proof div:nth-child(3){border-left:0;border-top:1px solid var(--line);padding-left:0}.proof div:nth-child(4){border-top:1px solid var(--line)}
+ .reel-shell{grid-template-columns:1fr}.reel-btn{display:none}.reel-viewport{height:470px}.reel-card{left:4%;right:4%}
+ .cap-grid{grid-template-columns:1fr 1fr}.skills{grid-template-columns:1fr}.links a:not(:last-child){display:none}.foot{flex-direction:column}
+}
+@media(max-width:560px){.proof,.cap-grid{grid-template-columns:1fr}.proof div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}.reel-viewport{height:520px}}
+</style>
 </head>
 <body>
-  <nav>
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top">ANDREW DURKIN</a>
-      <div class="nav-links">
-        <a href="#work">Selected Work</a>
-        <a href="#about">About</a>
-        <a href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </div>
-    </div>
-  </nav>
+<nav><div class="wrap nav"><a class="brand" href="#top">ANDREW DURKIN</a><div class="links"><a href="#work">Selected Work</a><a href="#about">About</a><a href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></nav>
 
-  <main id="top">
-    <header class="wrap">
+<main id="top">
+<header class="wrap">
+  <div class="hero-grid">
+    <div>
       <div class="eyebrow">AI Systems · Automation · Workflow Design</div>
-      <h1>I build useful systems around messy real-world problems.</h1>
-      <p class="lede">My work sits where AI, operations, and people collide: finding friction, designing a better workflow, building the tool, and testing whether it actually helps.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#work">See selected work</a>
-        <a class="btn" href="#about">How I work</a>
-      </div>
-      <div class="proof-strip" aria-label="Portfolio themes">
-        <div class="proof"><strong>Build</strong>Rapid prototypes that turn into working systems.</div>
-        <div class="proof"><strong>Evaluate</strong>Benchmarks, failure analysis, and measurable outcomes.</div>
-        <div class="proof"><strong>Improve</strong>Workflows designed around the people who actually use them.</div>
-      </div>
-    </header>
-
-    <section id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Selected Work</h2>
-          <p>Not a wall of code screenshots. Each project starts with the problem, what I changed, and why the result matters.</p>
-        </div>
-
-        <div class="projects">
-          <article class="project featured">
-            <div>
-              <div class="num">01 / PERSONAL AI</div>
-              <h3>Jeppe</h3>
-              <p class="hook">A personal AI system designed to know what it knows, where it learned it, and when uncertainty should remain unresolved.</p>
-              <p class="detail">Jeppe combines evidence-backed context, provenance, user correction, bounded retrieval, multi-user separation, provider/model transparency, history import, and systematic retrieval evaluation. It runs as a working system on dedicated hardware rather than living forever in prototype purgatory.</p>
-              <div class="tags">
-                <span class="tag">PERSONAL AI</span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">PYTHON</span><span class="tag">EVALUATION</span><span class="tag">PROVENANCE</span>
-              </div>
-            </div>
-            <div class="project-footer"><span>Flagship systems project</span><strong><a href="jeppe.html">Open case study →</a></strong></div>
-          </article>
-
-          <article class="project">
-            <div>
-              <div class="num">02 / OPERATIONS</div>
-              <h3>18-Minute OTD</h3>
-              <p class="hook">A new target changed the metric. I focused on what needed to change in the workflow.</p>
-              <p class="detail">Redesigned delivery decision points around a new 18-minute OTD target. The store moved from last out of 30 stores during stressed periods to typically ranking between 5th and 10th, while sales also increased.</p>
-              <div class="tags"><span class="tag">PROCESS ANALYSIS</span><span class="tag">OPERATIONS</span><span class="tag">WORKFLOW DESIGN</span></div>
-            </div>
-            <div class="project-footer"><span>Real-world process redesign</span><strong><a href="otd.html">Open case study →</a></strong></div>
-          </article>
-
-          <article class="project">
-            <div>
-              <div class="num">03 / AUTOMATION</div>
-              <h3>Banner Automation</h3>
-              <p class="hook">Turned repetitive student ERP work into keyboard-driven workflows while accounting for ugly real-world exceptions.</p>
-              <p class="detail">Built hotkey workflows for Banner student ERP tasks and adapted the logic when historical records triggered unexpected interface behavior.</p>
-              <div class="tags"><span class="tag">ERP</span><span class="tag">AUTOMATION</span><span class="tag">HUMAN-IN-THE-LOOP</span></div>
-            </div>
-            <div class="project-footer"><span>Operational automation</span><strong>See how it worked →</strong></div>
-          </article>
-
-          <article class="project wide">
-            <div>
-              <div class="num">04 / PRODUCT + UX</div>
-              <h3>Sho Control</h3>
-              <p class="hook">A browser-based control layer built around an existing digital-signage system instead of replacing the whole stack.</p>
-              <div class="case-grid">
-                <div class="case"><span>Problem</span><p>Routine signage management was more awkward than the job required.</p></div>
-                <div class="case"><span>Build</span><p>Live preview, active queue, reusable slide library, scheduling, uploads, and text controls.</p></div>
-                <div class="case"><span>Approach</span><p>Improve the operator experience while preserving the hardware and software already in place.</p></div>
-              </div>
-              <div class="tags"><span class="tag">WEB APP</span><span class="tag">UX</span><span class="tag">RAPID PROTOTYPING</span><span class="tag">DIGITAL SIGNAGE</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap about-grid">
-        <div class="section-head"><h2>How I work</h2></div>
-        <div>
-          <div class="about-copy">
-            <p>I’m less interested in AI as a novelty than in what happens when you put it inside an actual workflow with constraints, bad interfaces, incomplete information, and people who need the thing to work.</p>
-            <p>My projects usually start with the same question: <strong>where is the friction, and what is the smallest useful system that can remove it?</strong></p>
-          </div>
-          <div class="skills" aria-label="Capabilities">
-            <div class="skill">AI-assisted application design</div>
-            <div class="skill">Workflow and process analysis</div>
-            <div class="skill">LLM context and retrieval systems</div>
-            <div class="skill">Automation and rapid prototyping</div>
-            <div class="skill">Evaluation and failure analysis</div>
-            <div class="skill">Human-centered systems thinking</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="wrap">
-        <div class="cta-box">
-          <h2>AI should make the work better, not just make the demo prettier.</h2>
-          <p>This portfolio documents systems I have built, workflows I have redesigned, and the reasoning behind them.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub profile ↗</a>
-            <a class="btn" href="#work">Back to projects</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <span>© 2026 Andrew Durkin</span>
-      <span>Built as a lightweight static site. Because the portfolio should load before the recruiter retires.</span>
+      <h1>I turn operational friction into working systems.</h1>
+      <p class="lede">I work at the intersection of AI, higher education, enterprise systems, and frontline operations. My projects start with a real constraint, then move through analysis, prototyping, testing, and iteration until the workflow is measurably better.</p>
+      <div class="hero-actions"><a class="btn primary" href="#work">Explore the work</a><a class="btn" href="#about">How I think</a></div>
     </div>
-  </footer>
+    <aside class="intro-card">
+      <div class="kicker">Current direction</div>
+      <p>I’m building toward AI and automation roles where systems thinking matters as much as model choice: context and retrieval, ERP workflow automation, CRM design, operational analysis, and tools built around the people who actually use them.</p>
+    </aside>
+  </div>
+
+  <div class="proof">
+    <div><strong>AI systems</strong>Retrieval, provenance, evaluation, model behavior.</div>
+    <div><strong>Enterprise workflow</strong>ERP automation and exception handling.</div>
+    <div><strong>Operations</strong>Process redesign tied to measurable performance.</div>
+    <div><strong>CRM / case management</strong>Tracking, ownership, continuity, follow-up.</div>
+  </div>
+</header>
+
+<section id="work">
+<div class="wrap">
+  <div class="section-head">
+    <h2>Selected Work</h2>
+    <p>Five different settings, one recurring pattern: find where information or decisions break down, then build a system around the actual work instead of forcing the work around the software.</p>
+  </div>
+
+  <div class="reel-shell">
+    <button class="reel-btn" id="prevBtn" aria-label="Previous project">↑</button>
+    <div class="reel-viewport" id="reelViewport" tabindex="0" aria-label="Interactive project reel">
+      <div class="reel-track" id="reelTrack">
+        <article class="reel-card" data-index="0">
+          <div class="reel-top"><span class="num">01 / PERSONAL AI</span><span class="capability">AI systems + evaluation</span></div>
+          <h3>Jeppe</h3>
+          <p class="hook">A personal AI system designed to know what it knows, where it learned it, and when uncertainty should remain unresolved.</p>
+          <p class="detail">Evidence-backed context, provenance, user correction, bounded retrieval, multi-user separation, provider/model transparency, history import, and systematic retrieval evaluation.</p>
+          <div class="tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">PYTHON</span><span class="tag">EVALUATION</span></div>
+          <a class="card-link" href="jeppe.html">Open case study →</a>
+        </article>
+
+        <article class="reel-card" data-index="1">
+          <div class="reel-top"><span class="num">02 / ENTERPRISE SYSTEMS</span><span class="capability">ERP + automation</span></div>
+          <h3>Banner ERP Automation</h3>
+          <p class="hook">Turned repetitive student ERP work into keyboard-driven workflows while accounting for messy real-world exceptions.</p>
+          <p class="detail">Designed hotkey workflows around Banner student ERP tasks and adapted the process when historical records changed interface behavior and blocked the happy path.</p>
+          <div class="tags"><span class="tag">ERP</span><span class="tag">AUTOMATION</span><span class="tag">EXCEPTION HANDLING</span><span class="tag">HIGHER ED</span></div>
+          <span class="card-link">Case study in progress</span>
+        </article>
+
+        <article class="reel-card" data-index="2">
+          <div class="reel-top"><span class="num">03 / OPERATIONS</span><span class="capability">Process analysis</span></div>
+          <h3>18-Minute OTD</h3>
+          <p class="hook">A changed performance target required a different operating model, not just “move faster.”</p>
+          <p class="detail">Redesigned delivery decision points around the 18-minute target. The store moved from last out of 30 stores during stressed periods to typically ranking between 5th and 10th, while sales also increased.</p>
+          <div class="tags"><span class="tag">OPERATIONS</span><span class="tag">CAPACITY</span><span class="tag">WORKFLOW DESIGN</span></div>
+          <a class="card-link" href="otd.html">Open case study →</a>
+        </article>
+
+        <article class="reel-card" data-index="3">
+          <div class="reel-top"><span class="num">04 / PRODUCT + UX</span><span class="capability">Rapid prototyping</span></div>
+          <h3>Sho Control</h3>
+          <p class="hook">A browser-based control layer built around an existing digital-signage system instead of replacing the whole stack.</p>
+          <p class="detail">Live preview, queue management, reusable slide library, scheduling, uploads, and operator-focused controls designed around existing hardware and software.</p>
+          <div class="tags"><span class="tag">WEB APP</span><span class="tag">UX</span><span class="tag">DIGITAL SIGNAGE</span></div>
+          <span class="card-link">Case study in progress</span>
+        </article>
+
+        <article class="reel-card" data-index="4">
+          <div class="reel-top"><span class="num">05 / CRM + CASE MANAGEMENT</span><span class="capability">Information systems</span></div>
+          <h3>CRM Systems</h3>
+          <p class="hook">Three prototypes in two industries, each solving a version of the same problem: fragmented context, unclear ownership, and lost follow-up.</p>
+          <p class="detail">Speira for student service continuity, Nostos for returning-student recruitment tracking, and a Pizza Hut Customer Care CRM for issue history, recovery, follow-up, and repeat-pattern visibility.</p>
+          <div class="tags"><span class="tag">CRM</span><span class="tag">CASE MANAGEMENT</span><span class="tag">SQLITE</span><span class="tag">ANALYTICS</span></div>
+          <a class="card-link" href="crm.html">Open portfolio study →</a>
+        </article>
+      </div>
+    </div>
+    <button class="reel-btn" id="nextBtn" aria-label="Next project">↓</button>
+  </div>
+
+  <div class="reel-dots" id="reelDots" aria-label="Choose project"></div>
+  <div class="reel-note">Scroll, swipe, use ↑ / ↓, or click the controls.</div>
+
+  <div class="cap-grid">
+    <div class="cap"><strong>Jeppe</strong><span>AI context + evaluation</span></div>
+    <div class="cap"><strong>Banner</strong><span>ERP + workflow automation</span></div>
+    <div class="cap"><strong>OTD</strong><span>Operations + metrics</span></div>
+    <div class="cap"><strong>Sho Control</strong><span>Product + UX</span></div>
+    <div class="cap"><strong>CRM Systems</strong><span>Continuity + case management</span></div>
+  </div>
+</div>
+</section>
+
+<section id="about">
+<div class="wrap about-grid">
+  <div><div class="eyebrow">How I work</div><h2>Start with the system, not the buzzword.</h2></div>
+  <div>
+    <div class="about-copy">
+      <p>I’m interested in AI because it can change how work gets done, not because every problem needs a model attached to it. Sometimes the right answer is retrieval architecture. Sometimes it is a better ERP workflow, a CRM, a queue, or a different decision point.</p>
+      <p>The common thread is systems thinking: understand the people, incentives, information, bottlenecks, and failure states first. Then build the smallest useful thing that changes the outcome.</p>
+    </div>
+    <div class="skills">
+      <div class="skill">AI-assisted application design</div><div class="skill">Workflow and process analysis</div>
+      <div class="skill">LLM context and retrieval systems</div><div class="skill">ERP and operational automation</div>
+      <div class="skill">CRM and case-management design</div><div class="skill">Evaluation and failure analysis</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="cta">
+<div class="wrap"><div class="cta-box">
+  <h2>Technology matters. Whether it actually improves the work matters more.</h2>
+  <p>This portfolio documents the systems, experiments, operational redesigns, and prototypes behind that approach.</p>
+  <div class="hero-actions"><a class="btn primary" href="https://github.com/Andrewdurkin82" target="_blank" rel="noreferrer">GitHub profile ↗</a><a class="btn" href="#work">Back to the reel</a></div>
+</div></div>
+</section>
+</main>
+
+<footer><div class="wrap foot"><span>© 2026 Andrew Durkin</span><span>AI systems · automation · workflow design</span></div></footer>
+
+<script>
+(() => {
+  const cards=[...document.querySelectorAll('.reel-card')];
+  const dots=document.getElementById('reelDots');
+  const viewport=document.getElementById('reelViewport');
+  let current=0, wheelLock=false, touchY=null;
+  const spacing=285;
+
+  cards.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'; d.setAttribute('aria-label','Show project '+(i+1));
+    d.addEventListener('click',()=>setCurrent(i));
+    dots.appendChild(d);
+  });
+  const dotEls=[...dots.children];
+
+  function setCurrent(i){
+    current=(i+cards.length)%cards.length;
+    cards.forEach((card,idx)=>{
+      let delta=idx-current;
+      if(delta>cards.length/2) delta-=cards.length;
+      if(delta<-cards.length/2) delta+=cards.length;
+      card.style.top=(delta*spacing-125)+'px';
+      card.classList.toggle('active',delta===0);
+      card.classList.toggle('near',Math.abs(delta)===1);
+      card.setAttribute('aria-hidden',delta===0?'false':'true');
+    });
+    dotEls.forEach((d,i)=>d.classList.toggle('active',i===current));
+  }
+  function next(){setCurrent(current+1)}
+  function prev(){setCurrent(current-1)}
+
+  document.getElementById('nextBtn').addEventListener('click',next);
+  document.getElementById('prevBtn').addEventListener('click',prev);
+  viewport.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();next()}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();prev()}
+  });
+  viewport.addEventListener('wheel',e=>{
+    e.preventDefault();
+    if(wheelLock)return;
+    wheelLock=true;
+    e.deltaY>0?next():prev();
+    setTimeout(()=>wheelLock=false,420);
+  },{passive:false});
+  viewport.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY},{passive:true});
+  viewport.addEventListener('touchend',e=>{
+    if(touchY===null)return;
+    const dy=e.changedTouches[0].clientY-touchY;
+    if(Math.abs(dy)>35) dy<0?next():prev();
+    touchY=null;
+  },{passive:true});
+
+  setCurrent(0);
+})();
+</script>
 </body>
 </html>
