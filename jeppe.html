@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Jeppe case study — evidence-first personal AI, context retrieval, provenance, evaluation, and deployment." />
+  <meta name="description" content="Jeppe case study — a user-owned personal intelligence layer for portable context, prompt efficiency, retrieval, provenance, and model-independent identity." />
   <title>Jeppe | Andrew Durkin</title>
   <style>
     :root{
@@ -85,18 +85,18 @@
 
   <main>
     <header class="wrap">
-      <div class="eyebrow">Case Study 01 · Personal AI</div>
+      <div class="eyebrow">Case Study 01 · Personal Intelligence Layer</div>
       <h1>Jeppe</h1>
-      <p class="lede">A personal AI system built around a broader question: how can an assistant build a useful understanding of a person over time while keeping that understanding accurate, inspectable, and under the user’s control?</p>
+      <p class="lede">Jeppe is evolving into a user-owned intelligence layer that can work with whichever AI assistant or model you prefer. It started as a prompt-efficiency problem: stop making people explain themselves from scratch. The larger goal became portability — build an accurate, inspectable understanding of yourself that you control and can carry to the next model.</p>
       <div class="meta">
         <span class="pill">PERSONAL AI</span><span class="pill">PYTHON</span><span class="pill">FASTAPI</span>
         <span class="pill">SQLITE</span><span class="pill">RAG / RETRIEVAL</span><span class="pill">LLM EVALUATION</span>
         <span class="pill">PROVENANCE</span><span class="pill">AI-ASSISTED DEVELOPMENT</span>
       </div>
       <div class="hero-grid">
-        <div class="stat"><strong>Evidence-first</strong><span>Memories point back to source material and lifecycle history.</span></div>
-        <div class="stat"><strong>Multi-user</strong><span>Context, evidence, settings, and conversations stay separated by user.</span></div>
-        <div class="stat"><strong>Bounded</strong><span>Relevant context is selected under explicit count and character limits.</span></div>
+        <div class="stat"><strong>User-owned</strong><span>Your identity and context should belong to you, not to one assistant or model.</span></div>
+        <div class="stat"><strong>Provider-neutral</strong><span>The intelligence layer is designed to outlive whichever model happens to answer today.</span></div>
+        <div class="stat"><strong>Evidence-backed</strong><span>Personal context points back to source material, corrections, and lifecycle history.</span></div>
         <div class="stat"><strong>Measured</strong><span>Retrieval and answer quality are tested instead of judged by vibes.</span></div>
       </div>
     </header>
@@ -104,13 +104,13 @@
     <section>
       <div class="wrap split">
         <div>
-          <div class="label">The problem</div>
-          <h2>Personalization is easy. Trustworthy personalization is not.</h2>
+          <div class="label">The mission</div>
+          <h2>Your assistant can change. Your identity should not reset with it.</h2>
         </div>
         <div>
-          <p class="big">LLMs can sound confident even when the personal context underneath an answer is stale, conflicting, weakly sourced, or simply irrelevant.</p>
-          <p>I wanted Jeppe to treat personal context as evidence rather than invisible intuition. A useful assistant should be able to preserve what a user actually said, distinguish that from later interpretation, keep conflicts unresolved when they really are unresolved, and expose enough provenance for the user to inspect or correct the system.</p>
-          <p>That changed the project from “build a chatbot with memory” into a larger systems problem involving retrieval, trust, privacy, lifecycle state, evaluation, and model behavior.</p>
+          <p class="big">Jeppe began with a practical annoyance: good AI conversations become expensive and repetitive when every new chat needs the same background, preferences, history, and instructions pasted back into the prompt.</p>
+          <p>At first, the obvious answer was to build a personal assistant that remembered more. That idea changed. The assistant itself is not the part I want to own. People should be able to use the model or assistant they prefer while keeping control of the accumulated context that makes that assistant useful to them.</p>
+          <p>That turned Jeppe into an intelligence-layer problem. To make identity portable, the system has to decide what is actually known, where it came from, what changed, what conflicts, and which tiny slice of that context belongs in the current prompt. Memory retrieval is where much of the work sits today because portability is useless if the layer sends the wrong version of you to the model.</p>
         </div>
       </div>
     </section>
@@ -118,22 +118,22 @@
     <section>
       <div class="wrap">
         <div class="label">Design principles</div>
-        <h2>The system is designed to fail conservatively.</h2>
+        <h2>The user owns the context. The model earns access to it.</h2>
         <div class="cards">
-          <div class="card"><h3>Evidence before interpretation</h3><p>User and assistant text are retained as evidence. Derived memories reference evidence rather than silently replacing it.</p></div>
-          <div class="card"><h3>Conflicts stay conflicts</h3><p>Competing claims are preserved together. The system does not invent a winner simply because one answer would be more convenient.</p></div>
-          <div class="card"><h3>Current permission wins</h3><p>External processing is controlled by deterministic application logic, not by hoping a model correctly interprets a privacy instruction.</p></div>
-          <div class="card"><h3>Context has to earn its place</h3><p>Retrieval is bounded and inspectable. More personal information is not automatically better information.</p></div>
+          <div class="card"><h3>Your context is portable</h3><p>The long-term asset is the user’s accumulated identity and history, not loyalty to a particular answer model.</p></div>
+          <div class="card"><h3>Models stay replaceable</h3><p>Jeppe should work with a preferred assistant rather than forcing the user into a single model, provider, or interface.</p></div>
+          <div class="card"><h3>Evidence before interpretation</h3><p>Derived memories point back to source evidence, corrections, and conflicts instead of silently becoming “truth.”</p></div>
+          <div class="card"><h3>Context has to earn its place</h3><p>Prompt efficiency means sending the smallest useful context, not dumping a biography into every request.</p></div>
         </div>
 
         <div class="architecture">
           <div class="label">Logical path</div>
           <div class="flow">
-            <div class="node"><small>01</small><strong>User request</strong><span>Authenticated conversation and processing policy</span></div>
-            <div class="node"><small>02</small><strong>Evidence + memory</strong><span>Eligible source-backed context and unresolved conflicts</span></div>
-            <div class="node"><small>03</small><strong>Context Builder</strong><span>Ranks and bounds the packet for the current task</span></div>
-            <div class="node"><small>04</small><strong>Generation</strong><span>Provider receives authorized context plus conversation evidence</span></div>
-            <div class="node"><small>05</small><strong>Audit</strong><span>Selection, dependencies, and provider-input identity are recorded</span></div>
+            <div class="node"><small>01</small><strong>User request</strong><span>The task comes from the assistant or conversation the user chose</span></div>
+            <div class="node"><small>02</small><strong>Owned context</strong><span>Eligible source-backed identity, history, preferences, and unresolved conflicts</span></div>
+            <div class="node"><small>03</small><strong>Context Builder</strong><span>Selects the smallest useful packet for this task</span></div>
+            <div class="node"><small>04</small><strong>Preferred model</strong><span>The authorized assistant receives task-relevant context instead of the user starting over</span></div>
+            <div class="node"><small>05</small><strong>Audit</strong><span>What was selected, why, and what model received it remain inspectable</span></div>
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@
       <div class="wrap split">
         <div>
           <div class="label">What I built</div>
-          <h2>From memory storage to an evaluated context system.</h2>
+          <h2>The intelligence layer became a retrieval problem.</h2>
         </div>
         <div class="cards">
           <div class="card"><h3>Evidence-backed memory</h3><p>Source spans, correction lineage, supersession, retraction, validation state, and user review controls.</p></div>
@@ -160,7 +160,7 @@
       <div class="wrap">
         <div class="label">Evaluation</div>
         <h2>I did not want “seems better” to be the metric.</h2>
-        <p class="big">Jeppe has separate evaluation for retrieval, context sufficiency, minimization, model planning, and generated-answer quality. Experimental systems remain separate from production authority so a promising benchmark result cannot quietly rewrite the product.</p>
+        <p class="big">Prompt efficiency was the original goal, but shorter prompts are worthless if they leave out something the model actually needs. Jeppe now evaluates retrieval, context sufficiency, minimization, model planning, and generated-answer quality separately so “less context” never becomes a goal at the expense of a worse answer.</p>
 
         <div class="evidence">
           <div class="evidence-card">
@@ -187,14 +187,14 @@
       <div class="wrap split">
         <div>
           <div class="label">Evolution</div>
-          <h2>The project changed as the questions got harder.</h2>
+          <h2>The product changed once the assistant stopped being the point.</h2>
         </div>
         <div class="timeline">
-          <div class="step"><div class="when">Foundation</div><div><h3>Conversation + evidence</h3><p>Started with authenticated conversations, immutable evidence, explicit processing policy, and a provider-neutral behavior layer.</p></div></div>
-          <div class="step"><div class="when">Memory</div><div><h3>Provenance + lifecycle</h3><p>Added source-backed memories, correction and retraction controls, conflict handling, and conservative admission.</p></div></div>
-          <div class="step"><div class="when">Retrieval</div><div><h3>Selection became its own system</h3><p>Built lexical and hybrid retrieval, bounded packets, decision traces, benchmarks, and holdout validation.</p></div></div>
-          <div class="step"><div class="when">Evaluation</div><div><h3>From retrieval metrics to answer quality</h3><p>Added sufficiency tests, ablations, automated minimization, live answer experiments, and blinded review.</p></div></div>
-          <div class="step"><div class="when">Product</div><div><h3>Usability and portability</h3><p>Added multi-user setup, review tools, provider/model provenance, history import, private remote access, and a cleaner chat interface.</p></div></div>
+          <div class="step"><div class="when">Original idea</div><div><h3>Stop rebuilding the prompt</h3><p>The first goal was efficiency: preserve useful personal context so every conversation did not begin with another manual explanation of who the user is.</p></div></div>
+          <div class="step"><div class="when">Assistant</div><div><h3>Build something that remembers</h3><p>Jeppe initially looked like a personal assistant with its own conversations, memory, permissions, and behavior.</p></div></div>
+          <div class="step"><div class="when">Intelligence layer</div><div><h3>The assistant became replaceable</h3><p>The concept shifted toward a provider-neutral layer that owns context while the user chooses the assistant or model that actually answers.</p></div></div>
+          <div class="step"><div class="when">Current work</div><div><h3>Memory retrieval became the hard part</h3><p>Portable identity requires accurate selection. The system now spends much of its engineering effort on evidence, conflicts, ranking, bounded context, benchmarks, and failure analysis.</p></div></div>
+          <div class="step"><div class="when">Destination</div><div><h3>Take yourself to the next model</h3><p>The long-term goal is a user-owned identity and context layer that can move with you instead of being stranded inside whichever AI product you used last.</p></div></div>
         </div>
       </div>
     </section>
@@ -202,9 +202,9 @@
     <section>
       <div class="wrap">
         <div class="label">What it taught me</div>
-        <p class="lesson">The hardest part of an AI system is often not getting the model to answer. It is deciding what information the model deserves to see before it answers.</p>
+        <p class="lesson">The assistant should be replaceable. Your context should not be.</p>
         <div class="quote">
-          <p>Jeppe pushed me toward a systems view of AI: model capability matters, but so do provenance, permissions, retrieval quality, failure handling, evaluation design, and the interface where a human can correct the machine.</p>
+          <p>Jeppe started as a way to make prompts smaller. It became a question of ownership: can a person keep the useful understanding an AI has built about them, inspect it, correct it, and bring it to whatever model they choose next? Retrieval is the work in front of that goal right now.</p>
         </div>
       </div>
     </section>
@@ -213,8 +213,8 @@
       <div class="wrap">
         <div class="cta-box">
           <div class="label">Back to the portfolio</div>
-          <h2>One project. Several different kinds of AI work.</h2>
-          <p>Jeppe is the deepest technical project in the portfolio, but the same approach shows up elsewhere: understand the workflow, identify the failure points, build something useful, and measure whether it improved the situation.</p>
+          <h2>The model is a component. The user’s context is the durable layer.</h2>
+          <p>Jeppe is still evolving, and the retrieval problem is very much unfinished. The direction is clearer now: give people a way to own the accumulated identity and context that makes AI personal, then let them choose which assistant gets to use it.</p>
           <a class="btn" href="index.html#work">View selected work →</a>
         </div>
       </div>
